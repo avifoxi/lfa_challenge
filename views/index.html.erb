@@ -1,0 +1,38 @@
+
+
+
+	<hr>
+	List of Authors:
+	<%= @authors %>
+	<hr>
+	
+	List of Tags:
+	<%= @tags %>
+	<hr>
+	List of Subject:
+	<% @subjects.each do |s|  %>
+		<a href="#"><%= s %></a>
+	<% end  %>
+	<hr>
+	List of Languages:
+	<%= @languages %>
+	<hr>
+
+	<% if @json_catalog %>
+		<% @json_catalog.each do |k,v| %>
+			<div>
+				<h3><%= v['doc']['name'] %></h3>
+				<p>
+					By: <%= v['doc']['authors'] %><br>
+					Tags: <%= v['doc']['tags'] %><br>
+					Blurb: <%= v['doc']['blurb'] %><br>
+					Editor: <%= v['doc']['editor'] %><br>
+					Subject: <%= v['doc']['subjects'] %><br>
+					Languages: <%= v['doc']['languages'] %><br>
+				</p>
+				<img src="thumbnails/<%= k %>.jpg" alt="">
+			</div>
+			<hr>
+		<% end %>
+	<% end %>
+
