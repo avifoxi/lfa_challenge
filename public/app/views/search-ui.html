@@ -17,6 +17,6 @@
     Authors <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" role="menu" >
-    <li ng-repeat="author in sUi.categorySearchables.authors"><a href="#">{{ author.full_name }}</a></li>
+    <li ng-repeat="author in sUi.categorySearchables.authors"><a href="#" ng-click="sUi.toggleSearchable('authors', author)">{{ author.full_name }}</a></li>
   </ul>
 </div>

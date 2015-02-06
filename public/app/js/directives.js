@@ -20,6 +20,7 @@
     return {
       restrict: "E",
       templateUrl: "app/views/search-ui.html",
+      
       controller: ['$http', function($http){
         var self = this;
         self.categorySearchables = {};
@@ -36,8 +37,20 @@
         });
 
         self.toggleSearchable = function(category, val){
-          // var k, v = filterObj
-        }
+          var contains = self.selectedBoolean(category, val);
+          if ( contains ){
+            self.userSelected[category] = _.without(self.userSelected[category], val);
+            // console.log('user has selected this shit');
+          } else{
+            self.userSelected[category].push(val);
+            // console.log('user has NOT selected this shit');
+          }
+          console.log( self.userSelected[category] );
+        };
+
+        self.selectedBoolean = function(category, val){
+          return _.contains( self.userSelected[category], val);
+        };
 
         console.log("self.categorySearchables: " + self.categorySearchables);
         console.log("self.userSelected: " + self.userSelected);
