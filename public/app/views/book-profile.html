@@ -1,3 +1,18 @@
-<h3>{{ book.doc.name }}</h3>
+<!-- <h3>{{ book.doc.name }}</h3>
 
-<p>By {{book.doc.authors}}  </p>
+<p> 
+	By {{book.doc.authors}}. 
+	
+	<br>
+
+</p> -->
+
+    <div class="thumbnail">
+      <img ng-src="/thumbnails/{{book.doc._id}}.jpg"/>
+      <div class="caption">
+        <h3>{{ book.doc.name }}</h3>
+        <p>...</p>
+        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+    

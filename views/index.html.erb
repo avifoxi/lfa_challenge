@@ -1,29 +1,11 @@
 
-<hr>
-List of Authors:
-<%= @authors %>
-<hr>
-
-List of Tags:
-<%= @tags %>
-<hr>
-List of Subject:
-<% @subjects.each do |s|  %>
-	<a href="#"><%= s %></a>
-<% end  %>
-<hr>
-List of Languages:
-<%= @languages %>
-<hr>
-
 <search-ui></search-ui>
 
 
-<ul>
-	<li ng-repeat="book in library.books">
-		
-		<book-profile></book-profile>
-
-	</li>
-</ul>
+<!-- Book Profile Thumbnails -->
+<div class="row">
+  <div class="col-sm-6 col-md-4" ng-repeat="book in library.books"> 
+			<book-profile></book-profile>
+  </div>
+</div>
 
