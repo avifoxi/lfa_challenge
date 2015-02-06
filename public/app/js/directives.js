@@ -35,7 +35,7 @@
 
         });
 
-        self.userAddSearchable = function(filterObj){
+        self.toggleSearchable = function(category, val){
           // var k, v = filterObj
         }
 
