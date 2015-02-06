@@ -36,7 +36,7 @@
         });
 
         self.userAddSearchable = function(filterObj){
-          var k, v = filterObj
+          // var k, v = filterObj
         }
 
         console.log("self.categorySearchables: " + self.categorySearchables);

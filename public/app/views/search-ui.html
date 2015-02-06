@@ -1,1 +1,22 @@
 <h2>i am a search ui</h2>
+
+<div ng-repeat="searchable in sUi.categorySearchables">
+	
+	<p>{{ searchable }}</p>
+
+</div>
+
+
+<h2>Filter By Category Content</h2>
+<hr>
+
+<!-- Single button. Thank you Bootstrap -->
+<div class="btn-group">
+  
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    Authors <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu" >
+    <li ng-repeat="author in sUi.categorySearchables.authors"><a href="#">{{ author.full_name }}</a></li>
+  </ul>
+</div>
