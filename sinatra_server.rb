@@ -7,13 +7,13 @@ Tilt.register Tilt::ERBTemplate, 'html.erb'
 
 catalog = File.read("./Library\ Display/catalog.txt")
 
-json_catalog = JSON.parse(catalog)
+faux_nosql_catalog = JSON.parse(catalog)
 
-names = json_catalog.flat_map{|k,v| json_catalog[k]['doc']['name']}.uniq
-authors = json_catalog.flat_map{|k,v| json_catalog[k]['doc']['authors']}.uniq
-tags = json_catalog.flat_map{|k,v| json_catalog[k]['doc']['tags']}.uniq
-subjects = json_catalog.flat_map{|k,v| json_catalog[k]['doc']['subjects']}.uniq
-languages = json_catalog.flat_map{|k,v| json_catalog[k]['doc']['languages']}.uniq
+names = faux_nosql_catalog.flat_map{|k,v| faux_nosql_catalog[k]['doc']['name']}.uniq
+authors = faux_nosql_catalog.flat_map{|k,v| faux_nosql_catalog[k]['doc']['authors']}.uniq
+tags = faux_nosql_catalog.flat_map{|k,v| faux_nosql_catalog[k]['doc']['tags']}.uniq
+subjects = faux_nosql_catalog.flat_map{|k,v| faux_nosql_catalog[k]['doc']['subjects']}.uniq
+languages = faux_nosql_catalog.flat_map{|k,v| faux_nosql_catalog[k]['doc']['languages']}.uniq
 
 get '/' do 
   erb :index 
@@ -22,10 +22,10 @@ end
 get '/books' do
 	content_type :json
 
-  json_catalog.to_json
+  faux_nosql_catalog.to_json
 end
 
-get '/search_params' do 
+get '/category_searchables' do 
 	content_type :json
 	{
 		names: names,
