@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="libFA">
 <head>
 	<meta charset="UTF-8">
 	<title>Library For All Code Challenge</title>
@@ -9,7 +9,7 @@
 	<script src="./bower_packages/jquery/dist/jquery.min.js"></script>
 	<script src="./bower_packages/bootstrap/dist/js/bootstrap.min.js"></script>
 
-	<script src="./bower_packages/jquery/dist/js/jquery.min.js"></script>
+
 	
 	<script src="./bower_packages/angular/angular.min.js"></script>
 
@@ -17,9 +17,11 @@
 	
 
 </head>
-<body>
+<body ng-controller="BooksCtrl as library">
 
 	<%= yield %>
+
+	<script src="./app/app.js"></script>
 
 </body>
 </html>
