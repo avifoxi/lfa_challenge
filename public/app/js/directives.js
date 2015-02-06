@@ -21,7 +21,7 @@
       restrict: "E",
       templateUrl: "app/views/search-ui.html",
       
-      controller: ['$http', function($http){
+      controller: ['$http', '$rootScope', function($http, $rootScope){
         var self = this;
         self.categorySearchables = {};
         self.userSelected = {};
@@ -33,7 +33,8 @@
             uiPrep[prop] = [];
           }  
           self.userSelected = uiPrep;  
-
+          console.log( self.categorySearchables);
+// $rootScope.$broadcast('buttonClicked');
         });
 
         self.toggleSearchable = function(category, val){
@@ -45,7 +46,7 @@
             self.userSelected[category].push(val);
             // console.log('user has NOT selected this shit');
           }
-          console.log( self.userSelected[category] );
+          console.log( self.userSelected );
         };
 
         self.selectedBoolean = function(category, val){
