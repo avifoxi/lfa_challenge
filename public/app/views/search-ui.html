@@ -10,13 +10,67 @@
 <h2>Filter By Category Content</h2>
 <hr>
 
-<!-- Single button. Thank you Bootstrap -->
+<!-- Authors Dropdown Selection -->
 <div class="btn-group">
   
   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
     Authors <span class="caret"></span>
   </button>
+
   <ul class="dropdown-menu" role="menu" >
-    <li ng-repeat="author in sUi.categorySearchables.authors"><a href="#" ng-click="sUi.toggleSearchable('authors', author)">{{ author.full_name }}</a></li>
+    
+    <li ng-repeat="author in sUi.categorySearchables.authors">
+    	
+    	<a href="#" ng-click="sUi.toggleSearchable('authors', author)" ng-class="{ 'btn-success' : sUi.selectedBoolean('authors', author) }">
+    		
+    		{{ author.full_name }}
+    	
+    	</a>
+    </li>
   </ul>
 </div>
+
+<!-- Titles / Names of book -->
+
+<div class="btn-group">
+  
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    Titles <span class="caret"></span>
+  </button>
+  
+  <ul class="dropdown-menu" role="menu" >
+    
+    <li ng-repeat="name in sUi.categorySearchables.names">
+    	
+    	<a href="#" ng-click="sUi.toggleSearchable('names', name)" ng-class="{ 'btn-success' : sUi.selectedBoolean('names', name) }">
+    		
+    		{{ name }}
+    	
+    	</a>
+    </li>
+  </ul>
+</div>
+
+
+<!-- Tags -->
+
+<div class="btn-group">
+  
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    Tags <span class="caret"></span>
+  </button>
+  
+  <ul class="dropdown-menu" role="menu" >
+    
+    <li ng-repeat="tag in sUi.categorySearchables.tags">
+    	
+    	<a href="#" ng-click="sUi.toggleSearchable('tags', tag)" ng-class="{ 'btn-success' : sUi.selectedBoolean('tags', tag) }">
+    		
+    		{{ tag | lowercase }}
+    	
+    	</a>
+    </li>
+  </ul>
+</div>
+
+

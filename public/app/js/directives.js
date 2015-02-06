@@ -52,8 +52,8 @@
           return _.contains( self.userSelected[category], val);
         };
 
-        console.log("self.categorySearchables: " + self.categorySearchables);
-        console.log("self.userSelected: " + self.userSelected);
+        // console.log("self.categorySearchables: " + self.categorySearchables);
+        // console.log("self.userSelected: " + self.userSelected);
       }],
       controllerAs: 'sUi'
     }
