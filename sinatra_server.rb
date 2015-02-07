@@ -5,7 +5,7 @@ require 'shotgun'
 Tilt.register Tilt::ERBTemplate, 'html.erb'
 
 
-catalog = File.read("./Library\ Display/catalog.txt")
+catalog = File.read("./catalog.txt")
 
 faux_nosql_catalog = JSON.parse(catalog)
 

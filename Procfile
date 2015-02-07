@@ -1,0 +1,1 @@
+web: bundle exec ruby sinatra_server.rb -p $PORT
