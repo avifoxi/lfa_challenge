@@ -1,15 +1,11 @@
-console.log('loaded');
-
 (function() {
   
   var app = angular.module('userQfilters', []);
 
 
   app.filter('bookQuery', ['$rootScope', 'userQ', function ($rootScope, userQ) {
-	  // function that's invoked each time Angular runs $digest()
-	  // pass in `item` which is the single Object we'll manipulate
+	  
 	  return function (books) {
-	    // return the current `item`, but call `toUpperCase()` on it
 	  	
 	  	var q = userQ.categorySearchables;
 	  	
@@ -28,46 +24,35 @@ console.log('loaded');
 	      
 	  		_.each(keys, function(key){
 	  			var vals = q[key];
+	  			
 	  			_.each(vals, function(val){
 	  				if (_.contains( book.doc[key], val  )){
 	  					booksToShow.push(book);
-	  				} else if (book.doc[key] === val ){
-	  					booksToShow.push(book);
-	  				} else if ( book.doc[key].full_name ){
+	  				
+	  				} else if ( book.doc[key] === val ){
+	  					// as is the case for title
 	  					
+	  					booksToShow.push(book);
+	  				} else if ( book.doc[key][0].full_name){
+	  					
+	  					// as is the case for author
+
+	  					_.each(book.doc[key], function(author){
+	  						if (author.full_name === val.full_name ){
+	  							booksToShow.push(book);
+	  						}
+	  					}) 
+
 	  				}
 	  			})
 	  		})	      
 	    });
 	    return booksToShow;
-	  	// _.each(keys, function(key){
-	  		
 
-	  	// 	console.log(key);
-
-	  	// });  
-
-	    // $rootScope;
-	    // userQ;
-	    // return item;
 	  };
 	}]);
 
 
-
-
-
-
-  // app.filter('qSelection', ['$rootScope', function($rootScope) {
-	 //  return function(input){
-	 //  	return 'balls';
-	 //  };
-
-	  // $rootScope.$on('userQ:updated', function (event, data) {
-	  //   console.log(data);
-	  // });
-
-	// }]);
 
 })();
 
