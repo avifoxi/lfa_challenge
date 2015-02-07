@@ -28,7 +28,7 @@ end
 get '/category_searchables' do 
 	content_type :json
 	{
-		names: names,
+		name: names,
 		authors: authors,
 		tags: tags,
 		subjects: subjects,

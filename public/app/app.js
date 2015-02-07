@@ -1,30 +1,14 @@
 (function() {
-  var app = angular.module('libFA', ['lfa-directives', 'queryServices']);
+  var app = angular.module('libFA', ['lfa-directives', 'queryServices', 'userQfilters']);
 
-  app.controller('BooksCtrl', ['$http', 'userQ', '$rootScope', function($http, userQ, $rootScope){
+  app.controller('BooksCtrl', ['$http', function($http ){
     var library = this;
     library.books = [];
-    library.userquery = userQ.categorySearchables;
-    // console.log(libraryQ.categorySearchables);
 
     $http.get('/books').success(function(books) {
       library.books = books;
-      // console.log(books);
     })
 
-    console.log('$rootScope from app parent');
-	  console.log($rootScope.categorySearchables);
-
-	  $rootScope.$on('userQ:updated', function (event, data) {
-	    library.userquery = userQ.categorySearchables;
-	  });
-
-   //  $rootScope.$on('rootScope:emit', function(event, data) {
-   //  	alert(data);
-	  //   // you could inspect the data to see if what you care about changed, or just update your own scope
-	  //   // library.userquery = userQ.categorySearchables;
-	  // });
-    
   }]);
 
 })();
