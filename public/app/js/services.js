@@ -15,8 +15,6 @@
       }
 	    $rootScope.$broadcast('userQ:updated', 'i am updated');
 	  }
-	  // console.log('$rootScope from queryServices ');
-	  // console.log($rootScope);
 
 	}]);
 
