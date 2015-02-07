@@ -5,12 +5,12 @@
 	<search-ui></search-ui>
 
 
-	<h1>{{ library.userquery | bookQuery }}</h1>
-
+<!-- 	<h1>{{ library.userquery | bookQuery }}</h1>
+ -->
 	<!-- Book Profile Thumbnails -->
 
 	<div class="row">
-	  <div class="col-sm-6 col-md-4" ng-repeat="book in library.books"> 
+	  <div class="col-sm-6 col-md-4" ng-repeat="book in library.books | bookQuery"> 
 				
 				<book-profile></book-profile>
 	  
