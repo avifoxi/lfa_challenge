@@ -13,12 +13,10 @@
       } else{
         self.categorySearchables[category].push(val);
       }
-      // console.log( self );
-
-	    // notify listeners and provide the data that changed [optional]
-	    $rootScope.$broadcast('query:updated');
+	    $rootScope.$broadcast('userQ:updated', 'i am updated');
 	  }
-
+	  // console.log('$rootScope from queryServices ');
+	  // console.log($rootScope);
 
 	}]);
 
