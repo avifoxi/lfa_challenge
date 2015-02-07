@@ -16,7 +16,7 @@
 	  console.log($rootScope.categorySearchables);
 
 	  $rootScope.$on('userQ:updated', function (event, data) {
-	    alert(data); // 'Broadcast!'
+	    library.userquery = userQ.categorySearchables;
 	  });
 
    //  $rootScope.$on('rootScope:emit', function(event, data) {
