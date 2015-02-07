@@ -20,6 +20,8 @@
 	  	var booksToShow = [];
 	  	var keys = _.keys(q);
 
+	  	//// this is a sore spot -- in need of refactor, too much cycling - there is a better way to watch for changes other than manual iteration, i just haven't found how to do it easily in angular yet -- but I believe its connecte to $watchCollection functionality
+
 	  	_.each(books, function(book){
 	      
 	  		_.each(keys, function(key){
@@ -30,12 +32,12 @@
 	  					booksToShow.push(book);
 	  				
 	  				} else if ( book.doc[key] === val ){
-	  					// as is the case for title
+	  					// as is the case for title, not an array
 	  					
 	  					booksToShow.push(book);
 	  				} else if ( book.doc[key][0].full_name){
 	  					
-	  					// as is the case for author
+	  					// as is the case for author, need to select from object property not simple array
 
 	  					_.each(book.doc[key], function(author){
 	  						if (author.full_name === val.full_name ){
