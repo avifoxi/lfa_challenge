@@ -15,7 +15,7 @@ console.log('loaded');
 	  	
 	  	$rootScope.$on('userQ:updated', function (event, data) {
 		    q = userQ.categorySearchables;
-		    console.log('updated');
+		    // console.log('updated');
 		  });
 
 	  	if ( _.isEmpty(_.flatten( _.values(q) ) ) ){
@@ -31,6 +31,10 @@ console.log('loaded');
 	  			_.each(vals, function(val){
 	  				if (_.contains( book.doc[key], val  )){
 	  					booksToShow.push(book);
+	  				} else if (book.doc[key] === val ){
+	  					booksToShow.push(book);
+	  				} else if ( book.doc[key].full_name ){
+	  					
 	  				}
 	  			})
 	  		})	      
