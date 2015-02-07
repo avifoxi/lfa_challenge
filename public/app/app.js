@@ -16,8 +16,18 @@
 
     
 	  library.booksInQuery = function(){
-	  	var books = [];
-	  	library.userquery 
+	  	q = library.userquery;
+	  	if ( _.isEmpty(_.flatten( _.values(q) ) ) ){
+	  		return library.books;
+	  	} 
+	  	var booksToShow = [];
+	  	var keys = _.keys(q);
+	  	_.each(keys, function(key){
+	  		if (     )
+
+	  		console.log(key);
+	  	});
+
 	  };
 
 
