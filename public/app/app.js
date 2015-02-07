@@ -1,5 +1,16 @@
 (function() {
-  var app = angular.module('libFA', ['lfa-directives', 'queryServices']);
+  var app = angular.module('libFA', ['lfa-directives', 'queryServices', 'userQfilters']);
+
+  
+ //  app.filter('makeUppercase', function () {
+	//   // function that's invoked each time Angular runs $digest()
+	//   // pass in `item` which is the single Object we'll manipulate
+	//   return function (item) {
+	//     // return the current `item`, but call `toUpperCase()` on it
+	//     return item;
+	//   };
+	// });
+
 
   app.controller('BooksCtrl', ['$http', '$rootScope', 'userQ', function($http, $rootScope, userQ){
     var library = this;
@@ -15,20 +26,20 @@
 	  });
 
     
-	  library.booksInQuery = function(){
-	  	q = library.userquery;
-	  	if ( _.isEmpty(_.flatten( _.values(q) ) ) ){
-	  		return library.books;
-	  	} 
-	  	var booksToShow = [];
-	  	var keys = _.keys(q);
-	  	_.each(keys, function(key){
-	  		if (     )
+	  // library.booksInQuery = function(){
+	  // 	q = library.userquery;
+	  // 	if ( _.isEmpty(_.flatten( _.values(q) ) ) ){
+	  // 		return library.books;
+	  // 	} 
+	  // 	var booksToShow = [];
+	  // 	var keys = _.keys(q);
+	  // 	_.each(keys, function(key){
+	  // 		if (     )
 
-	  		console.log(key);
-	  	});
+	  // 		console.log(key);
+	  // 	});
 
-	  };
+	  // };
 
 
 
