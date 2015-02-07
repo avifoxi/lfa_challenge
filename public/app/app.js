@@ -4,8 +4,8 @@
   app.controller('BooksCtrl', ['$http', 'userQ', function($http, userQ){
     var library = this;
     library.books = [];
-    library.query = userQ.categoryVals;
-
+    library.userquery = userQ.categorySearchables;
+    // console.log(libraryQ.categorySearchables);
 
     $http.get('/books').success(function(books) {
       library.books = books;

@@ -1,5 +1,5 @@
 (function(){
-  var app = angular.module('lfa-directives', []);
+  var app = angular.module('lfa-directives', ['queryServices']);
 
   app.directive("bookProfile", function() {
     return {
@@ -21,36 +21,26 @@
       restrict: "E",
       templateUrl: "app/views/search-ui.html",
       
-      controller: ['$http', '$rootScope', function($http, $rootScope){
+      controller: ['$http', 'userQ', 'libraryQ', function($http, userQ, libraryQ){
         var self = this;
-        self.categorySearchables = {};
-        self.userSelected = {};
-
-        $http.get('/category_searchables').success( function(d){
-          self.categorySearchables = d;
-          var uiPrep = angular.copy(d)
-          for (prop in uiPrep){
-            uiPrep[prop] = [];
-          }  
-          self.userSelected = uiPrep;  
-          console.log( self.categorySearchables);
-// $rootScope.$broadcast('buttonClicked');
-        });
+        self.libQ = libraryQ;
+        self.userQ = userQ;
+        
 
         self.toggleSearchable = function(category, val){
           var contains = self.selectedBoolean(category, val);
           if ( contains ){
-            self.userSelected[category] = _.without(self.userSelected[category], val);
+            userQ.categorySearchables[category] = _.without(userQ.categorySearchables[category], val);
             // console.log('user has selected this shit');
           } else{
-            self.userSelected[category].push(val);
+            userQ.categorySearchables[category].push(val);
             // console.log('user has NOT selected this shit');
           }
-          console.log( self.userSelected );
+          console.log( userQ );
         };
 
         self.selectedBoolean = function(category, val){
-          return _.contains( self.userSelected[category], val);
+          return _.contains( userQ.categorySearchables[category], val);
         };
 
         // console.log("self.categorySearchables: " + self.categorySearchables);
