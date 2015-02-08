@@ -2,6 +2,18 @@
 <div ng-controller="BooksCtrl as library">
 <!-- Search UI  -->
 
+	
+	<div>
+	  <ul class="nav nav-pills">
+	    <li><a ui-sref="home">Home</a></li>
+	    <li><a ui-sref="books">Books</a></li>
+	  </ul>
+	</div>
+	 
+	<!-- Render here courtesy of ui.router -->
+	<ui-view></ui-view>
+
+
 	<search-ui></search-ui>
 
 
