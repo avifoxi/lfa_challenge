@@ -2,16 +2,16 @@
   var app = angular.module('libFA', ['lfa-directives', 'queryServices', 'userQfilters', 'booksServices', 'ui.router']);
 
   
-  app.config(function($stateProvider, $urlRouterProvider) {
+  app.config([ '$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
    $stateProvider
      .state('home', {
          url: '/home',
          templateUrl: 'app/views/home.html'
      })
-     .state('books', {
-         url: '/books',
-         templateUrl: 'app/views/books.html',
-         controller: 'BooksCtrl'
+     .state('booksIndex', {
+        url: '/books',
+        templateUrl: 'app/views/books-index.html',
+        controller: 'BooksCtrl'
      })
      // .state('books.page', {
      //     url: '/:id',
@@ -23,7 +23,7 @@
      //     // }
      // });
    $urlRouterProvider.otherwise('/home');
- })
+ }]);
 
 
 
@@ -31,12 +31,11 @@
 
   app.controller('BooksCtrl', ['$http', 'librarian', '$rootScope', function($http, librarian, $rootScope){
     var library = this;
-    library.books = {};
     library.librarian = librarian;
+    library.books = librarian.books;
 
   	$rootScope.$on('librarian:books', function (event, data) {
 	    library.books = data;
-	    console.log(librarian.getBook('981') );
 	  });
 
 

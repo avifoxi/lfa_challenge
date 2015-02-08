@@ -1,0 +1,14 @@
+<div ng-controller="BooksCtrl as library">
+	<search-ui></search-ui>
+
+	<!-- Book Profile Thumbnails -->
+
+	<div class="row">
+	  <div class="col-sm-6 col-md-4" ng-repeat="book in library.books | bookQuery"> 
+				
+				<book-partial></book-partial>
+	  
+	  </div>
+	</div>
+
+</div>
