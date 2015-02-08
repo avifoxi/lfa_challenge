@@ -1,4 +1,4 @@
-// (function() {
+(function() {
   
   var app = angular.module('schoolServices', []);
 
@@ -15,9 +15,8 @@
     
     $http.get('/students').success(function(students) {
       self.students = students;
-      // $rootScope.$broadcast('librarian:students', students);
-      // console.log(students)
-    })
+      $rootScope.$broadcast('students:got', students);
+    });
 
 
     self.getStudent = function(id){
@@ -28,6 +27,16 @@
 
   }]);
 
+  app.controller('StudentsIndexCtrl', ['students', '$rootScope', function(students, $rootScope){
+    var self = this;
+    self.students = students.students;
+
+    $rootScope.$on('students:got', function (event, data) {
+      self.students = data;
+    });
+
+  }]);
+
   
-// })();
+})();
 
