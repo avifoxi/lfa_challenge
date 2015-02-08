@@ -2,28 +2,29 @@
   var app = angular.module('libFA', ['lfa-directives', 'queryServices', 'userQfilters', 'booksServices', 'ui.router']);
 
   
-  app.config([ '$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+  app.config([ '$stateProvider', '$urlRouterProvider',  function($stateProvider, $urlRouterProvider) {
    $stateProvider
-     .state('home', {
+      .state('home', {
          url: '/home',
          templateUrl: 'app/views/home.html'
-     })
-     .state('booksIndex', {
+      })
+      .state('books', {
         url: '/books',
         templateUrl: 'app/views/books-index.html',
-        controller: 'BooksCtrl'
-     })
-     // .state('books.page', {
-     //     url: '/:id',
-     //     templateUrl: 'app/views/books.page.html'
-     //     // ,
-     //     // controller: function($scope, $stateParams) {
-     //     //     // $stateParams passes in item in url
-     //     //   $scope.book = $stateParams.book;
-     //     // }
-     // });
-   $urlRouterProvider.otherwise('/home');
- }]);
+        controllerAsoller: 'BooksCtrl'
+      })
+      .state('bookshow', {
+        url: '/books/:id',
+        templateUrl: 'app/views/books-show.html',
+        controller: function($scope, $stateParams, librarian) {
+            // $stateParams passes in item in url
+          var id = $stateParams.id;
+          $scope.book = librarian.getBook(id);
+        },
+        controllerAs: 'bookCtr'
+      });
+    // $urlRouterProvider.otherwise('/home');
+  }]);
 
 
 
