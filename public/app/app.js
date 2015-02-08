@@ -1,13 +1,15 @@
 (function() {
-  var app = angular.module('libFA', ['lfa-directives', 'queryServices', 'userQfilters']);
+  var app = angular.module('libFA', ['lfa-directives', 'queryServices', 'userQfilters', 'booksServices']);
 
-  app.controller('BooksCtrl', ['$http', function($http ){
+  app.controller('BooksCtrl', ['$http', 'librarian', '$rootScope', function($http, librarian, $rootScope){
     var library = this;
-    library.books = [];
+    library.books = {};
+    library.librarian = librarian;
 
-    $http.get('/books').success(function(books) {
-      library.books = books;
-    })
+  	$rootScope.$on('librarian:books', function (event, data) {
+	    library.books = data;
+	  });
+
 
   }]);
 

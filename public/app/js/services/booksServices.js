@@ -2,20 +2,15 @@
   
   var app = angular.module('booksServices', []);
 
-  app.service( ['$http', function ($http) {
-    // var self = this;
-    // self.categorySearchables = {};
-
-    // self.toggleQuery = function(category, val) {
-    //   var contains = _.contains( self.categorySearchables[category], val);  
-    //   if ( contains ){
-    //     self.categorySearchables[category] = _.without(self.categorySearchables[category], val);
-    //   } else{
-    //     self.categorySearchables[category].push(val);
-    //   }
-    //   $rootScope.$broadcast('userQ:updated', 'i am updated');
-    // }
-
+  app.service('librarian', ['$http', '$rootScope', function ($http, $rootScope) {
+    var librarian = this;
+    librarian.books = {};
+    
+    $http.get('/books').success(function(books) {
+      librarian.books = books;
+      $rootScope.$broadcast('librarian:books', books);
+      console.log(books)
+    })
   }]);
 
   // app.service('libraryQ', ['$http', 'userQ', function($http, userQ){
