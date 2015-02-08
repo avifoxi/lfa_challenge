@@ -8,6 +8,7 @@
 
   	$rootScope.$on('librarian:books', function (event, data) {
 	    library.books = data;
+	    console.log(librarian.getBook('981') );
 	  });
 
 

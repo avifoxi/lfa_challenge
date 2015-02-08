@@ -9,25 +9,18 @@
     $http.get('/books').success(function(books) {
       librarian.books = books;
       $rootScope.$broadcast('librarian:books', books);
-      console.log(books)
+      // console.log(books)
     })
+
+
+    librarian.getBook = function(id){
+      return _.find(librarian.books, function(book){ 
+        return book.doc._id === id; 
+      });
+    }
+
   }]);
 
-  // app.service('libraryQ', ['$http', 'userQ', function($http, userQ){
-  //   var self = this;
-  //   self.categorySearchables = {};
-
-  //   $http.get('/category_searchables').success( function(d){
-  //     self.categorySearchables = d;
-  //     var uiPrep = angular.copy(d)
-  //     for (prop in uiPrep){
-  //       uiPrep[prop] = [];
-  //     }
-  //     userQ.categorySearchables = uiPrep;  
-      
-  //   });
-
-  // }])
-
+  
 })();
 
