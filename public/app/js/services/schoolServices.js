@@ -40,13 +40,24 @@
   app.controller('StudentShowCtrl', ['$scope', '$stateParams',  'students', 'librarian', function($scope, $stateParams, students, librarian) {
     var id = Number($stateParams.id);
     $scope.student = students.getStudent(id);
+    
     $scope.favorites = function(){
-      
       return _.map($scope.student.favorite_books, function(id){
         var idString = id.toString();
-        console.log( librarian.getBook( idString  ) );
         return librarian.getBook( idString  );
       })
+    }
+
+    $scope.klassBooks = function(){
+      var klass = $scope.student.klass;
+      console.log('klass');
+
+      console.log(klass);
+        console.log('librarian.booksByKlass(klass)');
+        console.log(librarian.booksByKlass(klass));
+        console.log(librarian.booksByKlass(klass).length);
+
+        // return librarian.booksByKlass(klass);    
     }
 
   }]);

@@ -37,9 +37,6 @@
   }]);
 
 
-
-
-
   app.controller('BooksCtrl', ['$http', 'librarian', '$rootScope', function($http, librarian, $rootScope){
     var library = this;
     library.librarian = librarian;
@@ -48,8 +45,6 @@
   	$rootScope.$on('librarian:books', function (event, data) {
 	    library.books = data;
 	  });
-
-
   }]);
 
 })();

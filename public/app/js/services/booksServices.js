@@ -19,6 +19,18 @@
       });
     }
 
+    librarian.booksByKlass = function(klass) {
+      // _.where(librarian.books, {author: "Shakespeare", year: 1611});
+      var bbk = [];
+      _.each(librarian.books, function(book){ 
+        
+        if ( _.contains(book.doc.tags, klass) ){
+          bbk.push(book);
+        }
+      });
+      return bbk;
+    }
+
   }]);
 
   

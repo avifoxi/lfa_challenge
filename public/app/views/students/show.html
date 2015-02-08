@@ -2,30 +2,18 @@
   <h2>Welcome {{ student.name }}!</h2>
 </div>
 
-<!-- <img ng-src="//robohash.org/{{student.id}}.png" />
- -->
-<h3>My Favorite Books</h3>
-<ul>
-	
-	<li ng-repeat="book in favorites()">
-		<book-partial></book-partial>
+<img ng-src="//robohash.org/{{student.id}}.png" />
 
-	</li>
-
-</ul>
-
-
-
-
-{{ favorites() }}
-
-<!-- name
-favorite_books
-klass
- -->
-
-<!-- 
-<div class="caption">
-
+<h3>My Favorite Books</h3>		
+<div class="col-sm-6 col-md-4" ng-repeat="book in favorites()"> 
+	<book-partial></book-partial>
 </div>
- -->
+
+<h3>All Books for My Class</h3>
+<!-- <div class="col-sm-6 col-md-4" ng-repeat="book in klassBooks()"> 
+	<book-partial></book-partial>
+</div> -->
+
+{{ klassBooks() }}
+
+
