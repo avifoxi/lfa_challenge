@@ -44,7 +44,8 @@
       
       return _.map($scope.student.favorite_books, function(id){
         var idString = id.toString();
-        return librarian.getBook( idString  )
+        console.log( librarian.getBook( idString  ) );
+        return librarian.getBook( idString  );
       })
     }
 
