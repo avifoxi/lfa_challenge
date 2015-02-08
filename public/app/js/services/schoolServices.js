@@ -5,9 +5,7 @@
 
   app.service('orm', function(){
 
-
   })
-
 
   app.service('students', ['$http', '$rootScope', function ($http, $rootScope) {
     var self = this;
@@ -17,7 +15,6 @@
       self.students = students;
       $rootScope.$broadcast('students:got', students);
     });
-
 
     self.getStudent = function(id){
       return _.find(self.students, function(student){ 
@@ -59,6 +56,10 @@
         $scope.student.favorite_books.push(id);
         $scope.favorites();
       }
+    };
+
+    $scope.homework = function(){
+
     };
 
   }]);
