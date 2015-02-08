@@ -45,20 +45,21 @@
       return _.map($scope.student.favorite_books, function(id){
         var idString = id.toString();
         return librarian.getBook( idString  );
-      })
-    }
+      });
+    };
 
     $scope.klassBooks = function(){
       var klass = $scope.student.klass;
-      console.log('klass');
+      return librarian.booksByKlass(klass);    
+    };
 
-      console.log(klass);
-        console.log('librarian.booksByKlass(klass)');
-        console.log(librarian.booksByKlass(klass));
-        console.log(librarian.booksByKlass(klass).length);
-
-        // return librarian.booksByKlass(klass);    
-    }
+    $scope.addToFaves = function(id){
+      // console.log(id);
+      if ( !_.contains($scope.student.favorite_books, id ) ){
+        $scope.student.favorite_books.push(id);
+        $scope.favorites();
+      }
+    };
 
   }]);
 

@@ -10,10 +10,19 @@
 </div>
 
 <h3>All Books for My Class</h3>
-<!-- <div class="col-sm-6 col-md-4" ng-repeat="book in klassBooks()"> 
-	<book-partial></book-partial>
-</div> -->
+<div class="col-sm-6 col-md-4" ng-repeat="book in klassBooks()"> 
 
-{{ klassBooks() }}
+<!-- 	<book-partial></book-partial>
+ -->	
+ 	<div class="caption thumbnail">
+    <h3>{{ book.doc.name }}</h3>
+    <p>
+    	<a href="#" class="btn btn-primary" role="button">Read Me</a> 
+    	<a ui-sref="bookshow({ id: book.doc._id })" class="btn btn-default" role="button">Details</a>
+    	<button  class="btn btn-success" ng-click="addToFaves(book.doc._id)">Add to my favorites</button>
+    </p>
+  </div>
+</div>
+
 
 
