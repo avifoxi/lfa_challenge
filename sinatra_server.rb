@@ -1,7 +1,6 @@
 require 'sinatra'
 require 'json'
 require 'shotgun'
-# require 'faker'
 
 require_relative './fake_db/models.rb'
 
@@ -12,15 +11,6 @@ books = @faux_nosql_catalog
 cat_sear = @category_searchables
 kl = @klasses
 te = @teachers
-# catalog = File.read("./fake_db/catalog.txt")
-
-# faux_nosql_catalog = JSON.parse(catalog)
-
-# names = faux_nosql_catalog.flat_map{|k,v| faux_nosql_catalog[k]['doc']['name']}.uniq
-# authors = faux_nosql_catalog.flat_map{|k,v| faux_nosql_catalog[k]['doc']['authors']}.uniq
-# tags = faux_nosql_catalog.flat_map{|k,v| faux_nosql_catalog[k]['doc']['tags']}.uniq
-# subjects = faux_nosql_catalog.flat_map{|k,v| faux_nosql_catalog[k]['doc']['subjects']}.uniq
-# languages = faux_nosql_catalog.flat_map{|k,v| faux_nosql_catalog[k]['doc']['languages']}.uniq
 
 get '/' do 
   erb :index 
