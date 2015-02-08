@@ -1,6 +1,6 @@
 (function() {
   
-  var app = angular.module('schoolServices', []);
+  var app = angular.module('schoolServices', ['booksServices']);
 
 
   app.service('orm', function(){
@@ -37,6 +37,21 @@
 
   }]);
 
-  
+  app.controller('StudentShowCtrl', ['$scope', '$stateParams',  'students', 'librarian', function($scope, $stateParams, students, librarian) {
+    var id = Number($stateParams.id);
+    $scope.student = students.getStudent(id);
+    $scope.favorites = function(){
+      
+      return _.map($scope.student.favorite_books, function(id){
+        var idString = id.toString();
+        return librarian.getBook( idString  )
+      })
+    }
+
+  }]);
+
+
+
+
 })();
 

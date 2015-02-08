@@ -30,10 +30,7 @@
       .state('studentshow', {
         url: '/students/:id',
         templateUrl: 'app/views/students/show.html',
-        controller: function($scope, $stateParams, students) {
-          var id = Number($stateParams.id);
-          $scope.student = students.getStudent(id);
-        },
+        controller: 'StudentShowCtrl'
       });
 
     $urlRouterProvider.otherwise('/home');
