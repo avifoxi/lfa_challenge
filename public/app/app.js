@@ -23,7 +23,7 @@
         },
         controllerAs: 'bookCtr'
       });
-    // $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/home');
   }]);
 
 
