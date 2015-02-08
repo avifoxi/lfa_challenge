@@ -1,10 +1,10 @@
 (function(){
   var app = angular.module('lfa-directives', ['queryServices']);
 
-  app.directive("bookProfile", function() {
+  app.directive("bookPartial", function() {
     return {
       restrict: "E",
-      templateUrl: "app/views/book-profile.html"
+      templateUrl: "app/views/book-partial.html"
     };
   });
 
