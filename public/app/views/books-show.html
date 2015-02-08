@@ -1,0 +1,35 @@
+<div class="page-header">
+  <h2>{{ book.doc.name }} </h2>
+</div>
+
+<img ng-src="/thumbnails/{{book.doc._id}}.jpg"/>
+<p>
+	{{  }}
+</p>
+
+
+<table>
+  <caption>{{book.doc.blurb}}</caption>
+  
+  <tbody>
+    <tr>
+      <th>Authors</th>
+      <td ng-repeat="auth in book.doc.authors"> {{" " + auth.full_name + " "}} </td>
+    </tr>
+
+    <tr>
+      <th>Tags</th>
+      <td ng-repeat="tag in book.doc.tags"> {{ " " + tag + " " }}</td>
+    </tr>
+
+    <tr>
+      <th>Subjects</th>
+      <td ng-repeat="sub in book.doc.subjects"> {{ " " + sub + " " }}</td>
+    </tr>
+
+    <tr>
+      <th>Languages</th>
+      <td ng-repeat="lang in book.doc.languages"> {{ " " + lang + " " }}</td>
+    </tr>
+  </tbody>
+</table>

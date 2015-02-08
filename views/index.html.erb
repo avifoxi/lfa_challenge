@@ -1,20 +1,10 @@
-
-<div ng-controller="BooksCtrl as library">
-<!-- Search UI  -->
-
-	<search-ui></search-ui>
-
-
-	<h1>{{ library.userquery  }}</h1>
-
-	<!-- Book Profile Thumbnails -->
-
-	<div class="row">
-	  <div class="col-sm-6 col-md-4" ng-repeat="book in library.books | bookQuery"> 
-				
-				<book-profile></book-profile>
-	  
-	  </div>
-	</div>
-
+<div>
+  <ul class="nav nav-pills">
+    <li><a ui-sref="home">Home</a></li>
+    <li><a ui-sref="books">Books</a></li>
+  </ul>
 </div>
+	 
+<!-- Render here courtesy of ui.router -->
+<ui-view></ui-view>
+

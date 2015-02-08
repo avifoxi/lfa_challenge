@@ -49,7 +49,7 @@
 	  			})
 	  		})	      
 	    });
-	    return booksToShow;
+	    return _.uniq(booksToShow);
 
 	  };
 	}]);
