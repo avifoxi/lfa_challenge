@@ -22,6 +22,12 @@
       });
     }
 
+    self.studentsByKlass = function(klass){
+      return _.filter(self.students, function(student){
+        return student.klass === klass;
+      });
+    }
+
   }]);
 
   app.controller('StudentsIndexCtrl', ['students', '$rootScope', function(students, $rootScope){
@@ -62,10 +68,12 @@
 
     };
 
+    $scope.klassMates = function(){
+      var klass = $scope.student.klass;
+      return students.studentsByKlass(klass);
+    };
+
   }]);
-
-
-
 
 })();
 
