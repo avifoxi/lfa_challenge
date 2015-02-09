@@ -1,54 +1,76 @@
-Once again, thank you for taking the time to interview with me the other day.  As I discussed we are having a quick tech challenge to create a basic gauge of your ability to understand a problem, think for your self and create something that looks awesome.
+[I'm an inline-style link](https://www.google.com)
 
-So three quick points:
-		Please feel free to use frameworks if you feel it will speed up your development time.  I do not want you coding in vanilla and spending hours if you can pull a framework that does this for you!
-		Do not worry too much about formal testing - please make sure it works before you send me a link :)  I might ask you in a follow up to send through some document or email about how you would test the functions you created.  I might also ask it in the in person interview.
-		I sent through a picture of a Android application as this is what we have currently made - please note I do not want you to build and Android app! A webpage is the plan here unless you really really really want to send me an apk!
-		Let me know if you have any questions!
 
-Attached to this email is a zipped folder that contains a sample catalog (catalog.txt).  The format for this catalog is as follows:
+# Avi's Library For All Coding Jr Dev Challenge
 
-"1272":   - book ID / use this to get the thumbnail from the thumbnails directory
-	{
-		"doc":   - this contains catalog data only worry about what i list below
-		{
-			blurb - this is the book summary / it can be blank
-			editor - book editor
-			authors - book author (can be multiple)
-			name - book name
-			tags - these are metadata tags we assign to a book for searching purposes
-			subjects - these are metadata tags we assign for filtering level
-			languages - this is the language(s) the book is in
-		},
-		"bookdata": - you can ignore everything below here
-	}
+Thanks for reviewing! 
+[Here's the live link](https://lfa-challenge-app.herokuapp.com) and [here's the link to my github repo](https://github.com/avifoxi/lfa_challenge).
 
-From this catalog we have our current display as shown in Catalog View.png. 
+### Stack
 
-Currently it is simply a long list that shows the thumbnail, name and author of the book.  It is sorted from easiest to hardest based on the subjects tag. 
+Front End: 
+- Angular w/ ui-router
+- Underscore
+- Bootstrap
 
-When you click on any book it shows a summary of the book containing:
-Thumbnail
-Name
-Author
-Blurb
-and buttons to say read book or return to library
-Do not worry about the reading of the book - you can make this a dead button, return to library as well, remove it completely or whatever you like.
+Server: 
+- Sinatra 
 
-What we want to see:
+Deployment:
+- Heroku
 
-Take the current catalog display and improve it!  You must decide how to present it:
-Long list, but give the user a selection of how to sort
-Add filters to sort quicker
-Organize the books into sections that expand to a shorter list when selecting 
-Completely re-do how the books are displayed and sorted
-add extra data from the catalog or remove some data from the display
-really what ever you want to do
-Feel free to put your own twist on it! if you feel that it is better to only show thumbnails and no text go for it.  We want to see what you do and how you think.  
-Keep in mind the target audience is school children from PreK to Grade 12.
-For viewing purposes, send me a link for the webpage you create using what you feel most comfortable with.  However, please bare in mind we are mainly looking for JS, HTML and CSS on this challenge - if you go in a completely different route, make sure it looks AMAZING!
-If you have time and want to score some extra points give me the ability to upload thumbnails and a different catalog file.
+### Structure  
 
-We understand that you might have a busy schedule so please reach out to me if there is an issue, but ideally we would like to see what you have created by Monday, Feb 9th.  
+Louis' challenge description emphasized front end functionality.
+I started with a Sinatra app on the backend to serve the static files -- and wanted to build something using Angular on the front because that seems like a necessary framework for the Jr Dev position. 
 
-Good luck and remember to have fun!!
+The backend is very simple - there is no database, though the models emulate db models. The provided lfa catalog is served similarly to a nosql query returned with an ajax call, as are category_searchables. The student models that contain grade info emulate relational models. 
+
+The frontend is my first attempt at an Angular app. 
+As there is no database on the back, all changes to models are not persisted. But functionality could be extended pretty easily to persist the data. 
+
+### Process
+
+I began by building out a Search UI for any user to filter the book list. 
+The server provides category_searchables -- each category is a filter parameter specified in the challenge description. And the searchables are a list of valid options collected from the data on the backend. Ala, 'authors' points to a list of all valid authors. This could be done as easily on the front - but I chose to do this before moving to the client. 
+
+The search ui only filters inclusively.
+So you choose an author - and you see all books by that author.
+And if you additionally select a subject, you will also see all books with that subject - along with books by that author... even books with subjects not specified in the search.
+Obviously -- the user option for exclusive filtering would be a good next step.
+As would user input of text to filter the search. 
+
+Once basic filtering was accomplished I thought about how young learners might get excited about books, and how they might access shorter + more navigable lists of books. So I made some student models on the back end, divided students by grade levels (as divided up in the book tags), and gave students ability to select their favorite books, and build a favorites list. I thought that this would be a great way to get learners excited by certain titles, to see which books their friends favorite. This would also let LFA gauge which titles are most successful in different environments. 
+
+In a production app -- students would have private accounts and log in to access their favorites list, and navigate to their friends' favorites. Right now - there is no security! So we can navigate to students, select a student view, and add to their faves. 
+
+Also - teachers would have some admin functionality and the ability to assign challenges or homework about readings through the app. Next iteration.
+
+### Reflections
+
+Angular has a very steep learning curve!
+A good portion of my time on this challenge was spent studying, learning Angular's DSL (what's a directive? what's a service? what is dependency injection?) and wrapping my head around Angular's methodology (why is my model so thin when in rails they're so fat? why is my controller so loaded with functions? why is everything so modular?).
+
+After spending a few days immersed in Angular -- I'm pretty excited by the power of the framework, and by the modular approach. 
+
+As a critique - I find Angular's error stack trace to be pretty opaque. 
+One thing I really like about ruby and rails is how detailed the stack traces are - and how they point to the line that breaks the app. 
+Angular has great documentation -- but the console often doesn't point directly to the line that breaks. And that is very frustrating!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
