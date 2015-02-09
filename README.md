@@ -1,6 +1,3 @@
-[I'm an inline-style link](https://www.google.com)
-
-
 # Avi's Library For All Coding Jr Dev Challenge
 
 Thanks for reviewing! 
