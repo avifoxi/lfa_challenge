@@ -1,0 +1,50 @@
+<div class="page-header">
+  <h2>Welcome {{ student.name }}! <br><small>In {{ student.klass | lowercase }}</small></h2>
+</div>
+
+<img ng-src="//robohash.org/{{student.id}}.png" />
+
+<h3>My Favorite Books</h3>
+<div class="row">	
+<div class="col-sm-6 col-md-4" ng-repeat="book in favorites()"> 
+	<book-partial></book-partial>
+</div>
+</div>  
+
+
+<div class="row">
+  <h3>Kids in My Class <small>and their favorite books!</small></h3>
+
+
+  <div class="col-sm-6 col-md-4" ng-repeat="mate in klassMates()"> 
+    <div class="caption thumbnail">
+      <h4>{{ mate.name }}</h4>
+      <ul>
+        <li ng-repeat="fave in mate.favorite_books">
+          {{ fave }}
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+  <!-- show simple list of kids, with small -->
+</div>
+
+<div class="row"> 
+
+  <h3>All Books for My Class</h3>
+  <div class="col-sm-6 col-md-4" ng-repeat="book in klassBooks()"> 
+   	<div class="caption thumbnail">
+      <h3>{{ book.doc.name }}</h3>
+      <p>
+      	<a href="#" class="btn btn-primary" role="button">Read Me</a> 
+      	<a ui-sref="bookshow({ id: book.doc._id })" class="btn btn-default" role="button">Details</a>
+      	<button  class="btn btn-success" ng-click="addToFaves(book.doc._id)">Add to my favorites</button>
+      </p>
+    </div>
+  </div>
+
+</div>  
+
+
