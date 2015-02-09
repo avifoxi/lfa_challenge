@@ -6,7 +6,7 @@
 
 <h3>My Favorite Books</h3>
 <div class="row">	
-<div class="col-sm-6 col-md-4" ng-repeat="book in favorites()"> 
+<div class="col-sm-6 col-md-4" ng-repeat="book in favorites(student)"> 
 	<book-partial></book-partial>
 </div>
 </div>  
@@ -20,15 +20,14 @@
     <div class="caption thumbnail">
       <h4>{{ mate.name }}</h4>
       <ul>
-        <li ng-repeat="fave in mate.favorite_books">
-          {{ fave }}
+        <li ng-repeat="fave in favorites(mate)">
+          {{ fave.doc.name }}
         </li>
       </ul>
 
     </div>
   </div>
 
-  <!-- show simple list of kids, with small -->
 </div>
 
 <div class="row"> 

@@ -44,8 +44,8 @@
     var id = Number($stateParams.id);
     $scope.student = students.getStudent(id);
     
-    $scope.favorites = function(){
-      return _.map($scope.student.favorite_books, function(id){
+    $scope.favorites = function(student){
+      return _.map(student.favorite_books, function(id){
         var idString = id.toString();
         return librarian.getBook( idString  );
       });
@@ -64,9 +64,6 @@
       }
     };
 
-    $scope.homework = function(){
-
-    };
 
     $scope.klassMates = function(){
       var klass = $scope.student.klass;
