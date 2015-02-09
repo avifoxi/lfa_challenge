@@ -45,7 +45,6 @@ Also - teachers would have some admin functionality and the ability to assign ch
 
 ### Reflections
 
-Angular has a very steep learning curve!
 A good portion of my time on this challenge was spent studying, learning Angular's DSL (what's a directive? what's a service? what is dependency injection?) and wrapping my head around Angular's methodology (why is my model so thin when in rails they're so fat? why is my controller so loaded with functions? why is everything so modular?).
 
 After spending a few days immersed in Angular -- I'm pretty excited by the power of the framework, and by the modular approach. 

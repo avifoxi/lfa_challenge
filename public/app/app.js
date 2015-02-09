@@ -4,10 +4,6 @@
   
   app.config([ '$stateProvider', '$urlRouterProvider',  function($stateProvider, $urlRouterProvider) {
    $stateProvider
-      .state('home', {
-         url: '/home',
-         templateUrl: 'app/views/home.html'
-      })
       .state('books', {
         url: '/books',
         templateUrl: 'app/views/books-index.html'
@@ -33,7 +29,7 @@
         controller: 'StudentShowCtrl'
       });
 
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/books');
   }]);
 
 
