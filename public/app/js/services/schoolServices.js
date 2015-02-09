@@ -67,7 +67,7 @@
 
     $scope.klassMates = function(){
       var klass = $scope.student.klass;
-      return students.studentsByKlass(klass);
+      return _.without(students.studentsByKlass(klass), $scope.student );
     };
 
   }]);
