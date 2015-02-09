@@ -54,20 +54,13 @@ As a critique - I find Angular's error stack trace to be pretty opaque.
 One thing I really like about ruby and rails is how detailed the stack traces are - and how they point to the line that breaks the app. 
 Angular has great documentation -- but the console often doesn't point directly to the line that breaks. And that is very frustrating!
 
+### What would I test if I were testing?
 
+One major benefit of Angular's modularity is how testable every module is. 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Testing: 
+- does the filter filter ? 
+- do students <=> books associations behave reliably?
+- does the router route ? 
+- once data is persisted --- does data persist? do front and back sync well ?
 
