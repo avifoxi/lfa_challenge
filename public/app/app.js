@@ -38,11 +38,12 @@
     library.librarian = librarian;
     library.books = bookQueryFilter(librarian.books);
 
-
-
   	$rootScope.$on('librarian:books', function (event, data) {
 	    library.books = data;
 	  });
+    $rootScope.$on('userQ:updated', function (event, data) {
+      library.books = bookQueryFilter(librarian.books);
+    });
   }]);
 
 })();

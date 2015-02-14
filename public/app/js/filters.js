@@ -3,20 +3,20 @@
   var app = angular.module('userQfilters', []);
 
 
-  app.filter('bookQuery', ['$rootScope', 'userQ', function ($rootScope, userQ) {
+  app.filter('bookQuery', ['$rootScope', 'userQ',  function ($rootScope, userQ ) {
 	  
 	  return function (books) {
+	  	var q = userQ.categorySearchables;
 	  	
-	  	// var q = userQ.categorySearchables;
-	  	
-	  	// $rootScope.$on('userQ:updated', function (event, data) {
-		  //   q = userQ.categorySearchables;
-		  //   // console.log('updated');
-		  // });
+	  	console.log(q);
 
-	  	// if ( _.isEmpty(_.flatten( _.values(q) ) ) ){
-	  	// 	return books;
-	  	// } 
+	  	var skipFilters = _.every( [q.authors, q.name, q.tags, q.subjects, q.languages], function(oneQ){
+	  		return _.isEmpty(oneQ)
+	  	}) && ( q.userText === '' );
+
+	  	if ( skipFilters ){
+	  		return books;
+	  	} 
 	  	// var booksToShow = [];
 	  	// var keys = _.keys(q);
 
@@ -50,20 +50,20 @@
 	  	// 	})	      
 	   //  });
 	   //  return _.uniq(booksToShow);
-	    return books;
+	    // return books;
 	  };
 	}]);
 
-	app.filter('subjectQuery', ['$rootScope', 'userQ', function ($rootScope, userQ) {
-		return function(subsetOfBooks){
-			console.log('hewwo wowwd');
-
-		};
-	}]);
-
-
-
-
 })();
 
+
+
+	  	// authors
+	  	// name
+	  	// tags
+	  	// subjects
+	  	// languages
+
+	  	// exclusive
+	  	// userText
 

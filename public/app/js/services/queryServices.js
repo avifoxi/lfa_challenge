@@ -29,6 +29,7 @@
         uiPrep[prop] = [];
       }
       uiPrep.exclusive = false;
+      uiPrep.userText = '';
       console.log(uiPrep)
       userQ.categorySearchables = uiPrep;  
       
