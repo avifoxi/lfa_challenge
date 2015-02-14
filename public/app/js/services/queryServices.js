@@ -30,7 +30,7 @@
       }
       uiPrep.exclusive = false;
       uiPrep.userText = '';
-      console.log(uiPrep)
+      // console.log(uiPrep)
       userQ.categorySearchables = uiPrep;  
       
    	});

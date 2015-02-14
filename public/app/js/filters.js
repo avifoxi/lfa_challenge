@@ -8,62 +8,82 @@
 	  return function (books) {
 	  	var q = userQ.categorySearchables;
 	  	
-	  	console.log(q);
 
-	  	var filtersToRun = _.filter( [q.authors, q.name, q.tags, q.subjects, q.languages, q.userText], function(oneQ){
-	  		return !_.isEmpty(oneQ)
+	  	var filtersToRun = _.pick(q, function(oneQ){
+	  		return !_.isEmpty(oneQ) 
 	  	});
 
 	  	if ( _.isEmpty(filtersToRun) ){
 	  		return books;
 	  	} 
 
-
-	  	// var booksToShow = [];
+	  	var booksToShow = {};
+	  	var keys = _.keys(filtersToRun);
 
 	  	var filters = {
-	  		subjects : function(subset, queryVals){
-	  			var bksToShow = [];
+	  		defaultq : function(key, subset, queryVals){
+	  			var matches = {};
 	  			_.each(subset, function(book){
 	  				_.each(queryVals, function(val){
 
-	  					if (_.contains( book.doc.subjects, val  )){
-	  						bksToShow.push(book);
+	  					if (_.contains( book.doc[key], val  )){
+	  						matches[book.id] = book;
 	  					}
 
 	  				});
 	  			});
-	  			return _.uniq(bksToShow);
+	  			return matches;
 	  		}, 
 	  		name : function(subset, queryVals){
-	  			var bksToShow = [];
 	  			_.each(subset, function(book){
 	  				_.each(queryVals, function(val){
 
 	  					if ( book.doc.name === val ){
-	  						bksToShow.push(book);
+	  						booksToShow[book.id] = book;
 	  					}
 
 	  				});
 	  			});
-	  			return _.uniq(bksToShow);
+	  			// return _.uniq(bksToShow);
 	  		},
 	  		authors : function(subset, queryVals){
-	  			var bksToShow = [];
 	  			_.each(subset, function(book){
 	  				_.each(queryVals, function(val){
 	  					_.each(book.doc.authors, function(author){
 	  						if (author.full_name === val.full_name ){
-	  							bksToShow.push(book);
+	  							booksToShow[book.id] = book;
 	  						}
 	  					}) 
 	  				});
 	  			});
-	  			return _.uniq(bksToShow);
+	  			// return _.uniq(bksToShow);
 	  		}
 	  	}
+	  	_.each( keys, function(key){
+	  		var matches = {};
+	  		switch ( key ) {
+				  case "authors":
+				  	console.log('running authors')
+				  	// var matches = 
+				  	filters.authors( books, q.authors  );
+				  	// console.log('matches by author')
+				  	// console.log(matches)
+				  	// booksToShow.push(matches);
+				    break;
+					case "name":
+						// var matches = 
+						filters.name( books, q.name  );
+						// booksToShow.push(matches);
+						break;
+					default:
+						var matches = filters.defaultq( key, books, q[key]  );
+						booksToShow
+				}
+	  	});
+	  	console.log('this is filtered books');
 
-	  	return filters.authors( books, q.authors  );
+	  	console.log(booksToShow);
+	  	return booksToShow;
 	  	
 	  };
 	}]);
