@@ -10,14 +10,16 @@
 	  	
 	  	console.log(q);
 
-	  	var skipFilters = _.every( [q.authors, q.name, q.tags, q.subjects, q.languages], function(oneQ){
-	  		return _.isEmpty(oneQ)
-	  	}) && ( q.userText === '' );
+	  	var filtersToRun = _.filter( [q.authors, q.name, q.tags, q.subjects, q.languages, q.userText], function(oneQ){
+	  		return !_.isEmpty(oneQ)
+	  	});
 
-	  	if ( skipFilters ){
+	  	console.log(filtersToRun)
+	  	if ( _.isEmpty(filtersToRun) ){
 	  		return books;
 	  	} 
-	  	// var booksToShow = [];
+	  	// var filtersToRun = _.filter(  );
+	  	var booksToShow = [];
 	  	// var keys = _.keys(q);
 
 	  	// //// this is a sore spot -- in need of refactor, too much cycling - there is a better way to watch for changes other than manual iteration, i just haven't found how to do it easily in angular yet -- but I believe its connecte to $watchCollection functionality

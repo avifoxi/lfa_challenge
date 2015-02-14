@@ -42,6 +42,7 @@
 	    library.books = data;
 	  });
     $rootScope.$on('userQ:updated', function (event, data) {
+      console.log('changed query')
       library.books = bookQueryFilter(librarian.books);
     });
   }]);
