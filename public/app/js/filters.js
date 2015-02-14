@@ -14,12 +14,75 @@
 	  		return !_.isEmpty(oneQ)
 	  	});
 
-	  	console.log(filtersToRun)
 	  	if ( _.isEmpty(filtersToRun) ){
 	  		return books;
 	  	} 
-	  	// var filtersToRun = _.filter(  );
-	  	var booksToShow = [];
+
+
+	  	// var booksToShow = [];
+
+	  	var filters = {
+	  		subjects : function(subset, queryVals){
+	  			var bksToShow = [];
+	  			_.each(subset, function(book){
+	  				_.each(queryVals, function(val){
+
+	  					if (_.contains( book.doc.subjects, val  )){
+	  						bksToShow.push(book);
+	  					}
+
+	  				});
+	  			});
+	  			return _.uniq(bksToShow);
+	  		}, 
+	  		name : function(subset, queryVals){
+	  			var bksToShow = [];
+	  			_.each(subset, function(book){
+	  				_.each(queryVals, function(val){
+
+	  					if ( book.doc.name === val ){
+	  						bksToShow.push(book);
+	  					}
+
+	  				});
+	  			});
+	  			return _.uniq(bksToShow);
+	  		},
+	  		authors : function(subset, queryVals){
+	  			var bksToShow = [];
+	  			_.each(subset, function(book){
+	  				_.each(queryVals, function(val){
+	  					_.each(book.doc.authors, function(author){
+	  						if (author.full_name === val.full_name ){
+	  							bksToShow.push(book);
+	  						}
+	  					}) 
+	  				});
+	  			});
+	  			return _.uniq(bksToShow);
+	  		}
+	  	}
+
+	  	return filters.authors( books, q.authors  );
+	  	
+	  };
+	}]);
+
+})();
+
+
+
+	  	// authors
+	  	// name
+	  	// tags
+	  	// subjects
+	  	// languages
+
+	  	// exclusive
+	  	// userText
+
+
+
 	  	// var keys = _.keys(q);
 
 	  	// //// this is a sore spot -- in need of refactor, too much cycling - there is a better way to watch for changes other than manual iteration, i just haven't found how to do it easily in angular yet -- but I believe its connecte to $watchCollection functionality
@@ -53,19 +116,4 @@
 	   //  });
 	   //  return _.uniq(booksToShow);
 	    // return books;
-	  };
-	}]);
-
-})();
-
-
-
-	  	// authors
-	  	// name
-	  	// tags
-	  	// subjects
-	  	// languages
-
-	  	// exclusive
-	  	// userText
 
