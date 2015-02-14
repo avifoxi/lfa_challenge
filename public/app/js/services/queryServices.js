@@ -16,6 +16,11 @@
 	    $rootScope.$broadcast('userQ:updated', 'i am updated');
 	  }
 
+    self.toggleExc = function(){
+      self.categorySearchables.exclusive = !self.categorySearchables.exclusive;
+      $rootScope.$broadcast('userQ:updated', 'i am updated');
+    };
+
 	}]);
 
 	app.service('libraryQ', ['$http', 'userQ', function($http, userQ){
@@ -28,6 +33,9 @@
       for (prop in uiPrep){
         uiPrep[prop] = [];
       }
+      uiPrep.exclusive = false;
+      uiPrep.userText = '';
+      // console.log(uiPrep)
       userQ.categorySearchables = uiPrep;  
       
    	});
