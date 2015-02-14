@@ -19,7 +19,10 @@
 	  	var booksToShow = {};
 	  	var keys = _.keys(filtersToRun);
 
+	  	// hold different filter functions in this object and only call when needed, as opposed to looping through everything and type checking
 	  	var filters = {
+
+	  		// default searches array for presence 
 	  		defaultq : function(key, subset, queryVals){
 	  			_.each(subset, function(book){
 	  				_.each(queryVals, function(val){
@@ -31,6 +34,7 @@
 	  				});
 	  			});
 	  		}, 
+	  		// name searches for title string match
 	  		name : function(subset, queryVals){
 	  			_.each(subset, function(book){
 	  				_.each(queryVals, function(val){
@@ -42,6 +46,7 @@
 	  				});
 	  			});
 	  		},
+	  		// authors has to loop one level deeper to match each author within authors
 	  		authors : function(subset, queryVals){
 	  			_.each(subset, function(book){
 	  				_.each(queryVals, function(val){
@@ -56,9 +61,11 @@
 	  	}
 	  	_.each( keys, function(key, index){
 	  		var subsetOfBooks;
+	  		// first time we run the loop, include all books regardless
 	  		if ( index === 0 || !q.exclusive){
 	  			subsetOfBooks = books;
 	  		} else {
+	  			// if this is an exclusive search we only want to select from the books that have previously been white listed
 	  			subsetOfBooks = booksToShow;
 	  		}
 
@@ -73,9 +80,7 @@
 						filters.defaultq( key, subsetOfBooks, q[key]  );
 				}
 	  	});
-	  	// console.log('this is filtered books');
 
-	  	// console.log(booksToShow);
 	  	return booksToShow;
 	  	
 	  };
