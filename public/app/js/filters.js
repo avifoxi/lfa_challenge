@@ -54,12 +54,12 @@
 	  			});
 	  		}
 	  	}
-	  	_.each( keys, function(key){
+	  	_.each( keys, function(key, index){
 	  		var subsetOfBooks;
-	  		if (q.exclusive){
-	  			subsetOfBooks = booksToShow;
-	  		} else {
+	  		if ( index === 0 || !q.exclusive){
 	  			subsetOfBooks = books;
+	  		} else {
+	  			subsetOfBooks = booksToShow;
 	  		}
 
 	  		switch ( key ) {
