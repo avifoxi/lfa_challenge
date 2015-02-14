@@ -22,17 +22,15 @@
 
 	  	var filters = {
 	  		defaultq : function(key, subset, queryVals){
-	  			var matches = {};
 	  			_.each(subset, function(book){
 	  				_.each(queryVals, function(val){
 
 	  					if (_.contains( book.doc[key], val  )){
-	  						matches[book.id] = book;
+	  						booksToShow[book.id] = book;
 	  					}
 
 	  				});
 	  			});
-	  			return matches;
 	  		}, 
 	  		name : function(subset, queryVals){
 	  			_.each(subset, function(book){
@@ -61,24 +59,32 @@
 	  	}
 	  	_.each( keys, function(key){
 	  		var matches = {};
+	  		var subsetOfBooks;
+	  		if (q.exclusive){
+	  			subsetOfBooks = booksToShow;
+	  		} else {
+	  			subsetOfBooks = books;
+	  		}
+
 	  		switch ( key ) {
 				  case "authors":
 				  	console.log('running authors')
 				  	// var matches = 
-				  	filters.authors( books, q.authors  );
+				  	filters.authors( subsetOfBooks, q.authors  );
 				  	// console.log('matches by author')
 				  	// console.log(matches)
 				  	// booksToShow.push(matches);
 				    break;
 					case "name":
 						// var matches = 
-						filters.name( books, q.name  );
-						// booksToShow.push(matches);
+						filters.name( subsetOfBooks, q.name  );
+						// subsetOfBooksToShow.push(matches);
 						break;
 					default:
-						var matches = filters.defaultq( key, books, q[key]  );
-						booksToShow
+						filters.defaultq( key, subsetOfBooks, q[key]  );
 				}
+
+				// check for inclusive vs exclusive search -- and 
 	  	});
 	  	console.log('this is filtered books');
 
