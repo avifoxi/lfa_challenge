@@ -1,6 +1,11 @@
-
 <h2>Filter By Category Content</h2>
 
+<button class="btn btn-default" ng-click="sUi.toggleExc()" >
+  {{ sUi.checkExc() ? 'Exclusive Search' : 'Inclusive Search'}} 
+</button>
+
+<!-- ng-click="sUi.toggleSearchable('authors', author)" -->
+<!-- ng-class="{ 'btn-success' : sUi.selectedBoolean('authors', author) }" -->
 
 <!-- {{ sUi.libQ  }} -->
 <!-- Authors Dropdown Selection -->

@@ -26,6 +26,14 @@
           return _.contains( userQ.categorySearchables[category], val);
         };
 
+        self.toggleExc = function(){
+          userQ.toggleExc();
+        };
+
+        self.checkExc = function(){
+          return userQ.categorySearchables.exclusive;
+        }
+
       }],
       controllerAs: 'sUi'
     }

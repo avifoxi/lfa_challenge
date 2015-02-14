@@ -16,6 +16,11 @@
 	    $rootScope.$broadcast('userQ:updated', 'i am updated');
 	  }
 
+    self.toggleExc = function(){
+      self.categorySearchables.exclusive = !self.categorySearchables.exclusive;
+      $rootScope.$broadcast('userQ:updated', 'i am updated');
+    };
+
 	}]);
 
 	app.service('libraryQ', ['$http', 'userQ', function($http, userQ){
