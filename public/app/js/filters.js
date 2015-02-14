@@ -54,6 +54,13 @@
 	  };
 	}]);
 
+	// app.filter('subjectQuery', ['$rootScope', 'userQ', function ($rootScope, userQ) {
+	// 	return function(subsetOfBooks){
+	// 		console.log('hewwo wowwd');
+	// 	};
+	// }]);
+
+
 
 
 })();
