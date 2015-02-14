@@ -33,10 +33,12 @@
   }]);
 
 
-  app.controller('BooksCtrl', ['$http', 'librarian', '$rootScope', function($http, librarian, $rootScope){
+  app.controller('BooksCtrl', ['$http', 'librarian', '$rootScope', 'bookQueryFilter', function($http, librarian, $rootScope, bookQueryFilter){
     var library = this;
     library.librarian = librarian;
-    library.books = librarian.books;
+    library.books = bookQueryFilter(librarian.books);
+
+
 
   	$rootScope.$on('librarian:books', function (event, data) {
 	    library.books = data;

@@ -28,6 +28,8 @@
       for (prop in uiPrep){
         uiPrep[prop] = [];
       }
+      uiPrep.exclusive = false;
+      console.log(uiPrep)
       userQ.categorySearchables = uiPrep;  
       
    	});
